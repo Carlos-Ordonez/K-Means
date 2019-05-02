@@ -27,15 +27,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ##K-Means {.build}
 
-what is k means?
+What is k means?
 
-why would we use it?
+Why would we use it?
 
-how can we evaluate it?
+How can we evaluate it?
 
-lets see it in action!
+Lets see it in action!
 
-##What is K Means {.build}
+##What is K Means? {.build}
 
 The K-means algorithm is a **quick**, **lightweight**, **unsupervised** machine learning algorithm used to find **internal structures** of data which are not inherantly obvious.
 
@@ -92,7 +92,7 @@ $$Distance = ||D_{n,k}|| = \sqrt{\sum_i^n(D_{n.k})^2} = \sqrt{(x_{n,1}-\mu_{k,1}
 
 ##Loss Function{.build .bigger}
 
-$$Distance_{Global} = \sqrt{\sum_{k=1}^k \sum_{n:x_n \in S_k} \sum_{d=1}^D (x_{n,d} - \mu_{k,d})^2} $$
+$$Distance_{Global} = \sum_{k=1}^k \sum_{n:x_n \in S_k} \sum_{d=1}^D (x_{n,d} - \mu_{k,d})^2 $$
 
 $\sum_{k=1}^k$ = Sum amongst all clusters
 
@@ -101,18 +101,21 @@ $\sum_{n:x_n \in S_k}$ = for each point in the cluster
 $\sum_{d=1}^D (x_{n,d} - \mu_{k,d})^2$ = the sum of the euclidean distance of each points feature to each respective centroid feature
 
 
-##Psudocode {.build}
+##Steps {.build}
 
 -Initialize K clusters
 
 -Repeat untill convergence{
 
-1.Assign each datapoint to the cluster with the clostset centroid
+\ \ \ \ 1. Assign each datapoint to the cluster with the clostset 
+\ \ \ \ \ \ centroid
 
-2.Assign each centroid to be the mean of its clusters datapoints.
+\ \ \ \ 2. Assign each centroid to be the mean of its clusters
+\ \ \ \ \ \ datapoints.
+
 }
 
-##Psudocode
+##Pseudocode
 
 Randomly sample k points from dataset without replacement
 
@@ -120,12 +123,15 @@ $$\mu_k\leftarrow x_n$$
 
 - Repeat untill convergence{
 
-1. Assign each datapoint to the cluster with the clostset centroid
+\ \ \ \ 1. Assign each datapoint to the cluster with the clostset
+\ \ \ \ \ \ centroid
 
-2. Assign each centroid to be the mean of its clusters datapoints.
+\ \ \ \ 2. Assign each centroid to be the mean of its clusters
+\ \ \ \ \ \ datapoints.
+
 }
 
-##Psudocode
+##Pseudocode
 
 Randomly sample k points from dataset without replacement
 
@@ -133,15 +139,18 @@ $$\mu_k\leftarrow x_n$$
 
 Repeat untill $S_1...S_k$ dont change{
 
-  1. Assign each datapoint to the cluster with the clostset centroid
+\ \ \ \ 1. Assign each datapoint to the cluster with the clostset
+\ \ \ \ \ \ centroid
 
-  2. Assign each centroid to be the mean of its clusters datapoints.
+\ \ \ \ 2. Assign each centroid to be the mean of its clusters 
+\ \ \ \ \ \ datapoints.
+
 }
 
 
 
   
-##Psudocode
+##Pseudocode
 
 Randomly sample k points from dataset without replacement
 
@@ -149,14 +158,16 @@ $$\mu_k\leftarrow x_n$$
 
 Repeat untill $S_1...S_k$ dont change{
 
-  -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
+\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
   
-  -Place $x_n$ in Set $S_k$ and no other $S_j$
+\ \ \ \ -Place $x_n$ in Set $S_k$ and no other $S_j$
 
-  2.Assign each centroid to be the mean of its clusters datapoints.
+\ \ \ \ 2.Assign each centroid to be the mean of its clusters
+\ \ \ \ \ \ datapoints.
+
 }
 
-##Psudocode
+##Pseudocode
 
 Randomly sample k points from dataset without replacement
 
@@ -164,11 +175,12 @@ $$\mu_k\leftarrow x_n$$
 
 Repeat untill $S_1...S_k$ dont change{
 
-  -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
+\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
   
-  -Place $x_n$ in Set $S_k$ and no other $S_j$
+\ \ \ \ -Place $x_n$ in Set $S_k$ and no other $S_j$
 
   $$\mu_k\leftarrow|S_k|^{-1} = \frac{1}{N}\sum_{n:x_n \in S_k} x_n$$
+
 }
 
 ## Evaluation 
@@ -408,7 +420,7 @@ knitr::include_graphics("images/Global_vs_Local_min.png")
 ```
 
 
-##Application{.build}
+##Applications{.build}
 
 Dataset Segmentation:
 
@@ -420,7 +432,7 @@ Dataset Segmentation:
 
 ##Applications{.build}
 
-Image Compression
+Image Compression (85kb)
 
 ```{r out.width = "40%", out.height = "40%", fig.align="center", fig.cap="Full Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_Full_Color.png")
@@ -429,7 +441,7 @@ knitr::include_graphics("images/Headshot_Full_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (63kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="128 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_128_Color.png")
@@ -438,7 +450,7 @@ knitr::include_graphics("images/Headshot_128_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (50kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="64 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_64_Color.png")
@@ -447,7 +459,7 @@ knitr::include_graphics("images/Headshot_64_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (36kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="32 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_32_Color.png")
@@ -456,7 +468,7 @@ knitr::include_graphics("images/Headshot_32_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (26kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="16 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_16_Color.png")
@@ -465,7 +477,7 @@ knitr::include_graphics("images/Headshot_16_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (18kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="8 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_8_Color.png")
@@ -474,7 +486,7 @@ knitr::include_graphics("images/Headshot_8_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (10kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="4 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_4_Color.png")
@@ -483,7 +495,7 @@ knitr::include_graphics("images/Headshot_4_Color.png")
 
 ##Applications
 
-Image Compression
+Image Compression (7kb)
 
 ```{r out.width = "42%", out.height = "42%", fig.align="center", fig.cap="2 Color Image", echo=FALSE}
 knitr::include_graphics("images/Headshot_2_Color.png")
@@ -492,6 +504,8 @@ knitr::include_graphics("images/Headshot_2_Color.png")
 
 ##App
 https://carlos-ordonez.shinyapps.io/k-means_app/
+
+https://github.com/Carlos-Ordonez/K-Means
 
 ##Sources
 
