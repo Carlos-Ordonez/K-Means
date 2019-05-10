@@ -15,7 +15,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-##K-Means {#k-means .build}
+##K-Means {.build}
 
 What is k means?
 
@@ -633,7 +633,15 @@ knitr::include_graphics("images/Headshot_2_Color.png")
 
 https://carlos-ordonez.shinyapps.io/k-means_app/
 
+\
+
+\
+
 https://github.com/Carlos-Ordonez/K-Means
+
+\
+
+\
 
 ```{r out.width = "80%", out.height = "80%", fig.align="center", echo=FALSE}
 knitr::include_graphics("images/shiny_logo.png")
