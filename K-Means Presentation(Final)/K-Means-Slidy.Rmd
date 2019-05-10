@@ -259,7 +259,7 @@ Randomly sample k points from dataset without replacement
 
 $$\mu_k\leftarrow x_n$$
 
-Repeat untill $S_1...S_k$ dont change{
+Repeat untill $S_1...S_k$ "don't change"{
 
 \ \ \ \ 1. Assign each datapoint to the cluster with the clostset
 \ \ \ \ \ \ centroid
@@ -278,7 +278,7 @@ Randomly sample k points from dataset without replacement
 
 $$\mu_k\leftarrow x_n$$
 
-Repeat untill $S_1...S_k$ dont change{
+Repeat untill $S_1...S_k$ "don't change"{
 
 \ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $||x_n - \mu_k||$
   
@@ -295,7 +295,7 @@ Randomly sample k points from dataset without replacement
 
 $$\mu_k\leftarrow x_n$$
 
-Repeat untill $S_1...S_k$ dont change{
+Repeat untill $S_1...S_k$ "don't change"{
 
 \ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $||x_n - \mu_k||$
   
