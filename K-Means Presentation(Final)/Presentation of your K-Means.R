@@ -183,15 +183,11 @@ my_K_Means<-function(myData,k,pt){
 
 A314<-my_K_Means(A32,5,0)
 
-
-
-my_K_Means(DougScore,6,1)
-
-itt<-10
+itt<-20
 avgDistance<-data.frame(K = numeric(0), Distance = numeric(0))
 for (i in 1:itt){
   print(paste("K=",i))
-  Final_Cluster<-my_K_Means(A32,i,pt = 0)
+  Final_Cluster<-my_K_Means(A32,i,pt = .2)
   avgDistance<-rbind(avgDistance,data.frame(K = i,Distance = avg_Cluster_Distance))
 }
 

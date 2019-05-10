@@ -1,37 +1,27 @@
 ---
-title: "K-Means Algorithm"
+title: "K-Means Algorithm And It's Applications"
 author: "Carlos Ordonez"
-date: "March 27, 2019"
+date: "May 10, 2019"
 style: style/pres_Style.css
 runtime: shiny
 output: 
   ioslides_presentation:
+  style: style/pres_Style.css
+  widescreen: true
   incremental: true
-  theme: paper
 ---
-<style>
-.footer {
-    color: green;
-    background: #E8E8E8;
-    position: fixed;
-    top: 90%;
-    text-align:center;
-    width:100%;
-}
-</style>
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-##K-Means {.build}
+##K-Means {#k-means .build}
 
 What is k means?
 
-Why would we use it?
-
 How can we evaluate it?
+
+Why would we use it?
 
 Lets see it in action!
 
@@ -45,9 +35,50 @@ Lightweight
 
 Unsupervised
 
+##Machine Learning Types {.build}
+
+```{r out.width = "160%", out.height = "200%", fig.align="center", echo=FALSE}
+
+knitr::include_graphics("images/mlTypes.jpg")
+
+```
+
+
+##What is K Means?
+
+The K-means algorithm is a **quick**, **lightweight**, **unsupervised** machine learning algorithm used to find **internal structures** of data which are not inherantly obvious.
+
+Quick
+
+Lightweight
+
+Unsupervised
+
+##What is K Means?
+
+The K-means algorithm is a **quick**, **lightweight**, **unsupervised** machine learning algorithm used to find **internal structures** of data which are not inherantly obvious.
+
+Quick
+
+Lightweight
+
+Unsupervised
+
+Internal Structure
+
+##What is K Means?
+
+The K-means algorithm is a **quick**, **lightweight**, **unsupervised** machine learning algorithm used to find **internal structures** of data which are not inherantly obvious.
+
+Quick
+
+Lightweight
+
+Unsupervised
+
 Internal Structure?
 
-## What Is A Cluster {.build}
+## What Is A Cluster? {.build}
 
 Clustering is the grouping of objects according to certain attributes.
 
@@ -63,10 +94,67 @@ knitr::include_graphics("images/cluster_before_after.png")
 K means uses the Euclidean distance from the data points to centroids to to assign datapoints to clusters.
 
 
-$$||\vec{a}|| = \sqrt{\sum_i^n (a_i)^2} = \sqrt{(a_1)^2 + (a_2)^2 + \dots + (a_n)^2}$$
+$$||\vec{a}|| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}$$
 
+```{r out.width = "50%", out.height = "50%", fig.align="center", fig.cap="Euclidean Distance in R2", echo=FALSE}
+knitr::include_graphics("images/euclidean_Distance.png")
+
+```
 
 ##Summarizing a cluster{.build}
+
+k = number of clusters
+
+k cluster centers (Centroid)
+
+$$\mu_k = (\mu_{k,1},\mu_{k,2},\dots,\mu_{k,d})$$
+
+$$\mu_1,\mu_2,\dots,\mu_k$$
+
+##Cluster Summary
+
+```{r out.width = "90%", out.height = "90%", fig.align="center", fig.cap="k=4 Clustering", echo=FALSE}
+knitr::include_graphics("images/cluster_summary.png")
+
+```
+
+##Summarizing a cluster
+
+k = number of clusters
+
+k cluster centers (Centroid)
+
+$$\mu_k = (\mu_{k,1},\mu_{k,2},\dots,\mu_{k,d})$$
+
+$$\mu_1,\mu_2,\dots,\mu_k$$
+
+##Summarizing a cluster
+
+k = number of clusters
+
+k cluster centers (Centroid)
+
+$$\mu_k = (\mu_{k,1},\mu_{k,2},\dots,\mu_{k,d})$$
+
+$$\mu_1,\mu_2,\dots,\mu_k$$
+
+Each cluster will have a set of points S assigned to it
+
+##Summarizing a cluster
+
+k = number of clusters
+
+k cluster centers (Centroid)
+
+$$\mu_k = (\mu_{k,1},\mu_{k,2},\dots,\mu_{k,d})$$
+
+$$\mu_1,\mu_2,\dots,\mu_k$$
+
+Each cluster will have a set of points S assigned to it
+
+$$S_k = Set\ of\ points\ in\ cluster\ k$$
+
+##Summarizing a cluster
 
 k = number of clusters
 
@@ -82,30 +170,64 @@ $$S_k = Set\ of\ points\ in\ cluster\ k$$
 
 $$S_1,S_2,\dots,S_k$$
 
-##k means assignment{.smaller}
+##Cluster Summary
+
+```{r out.width = "90%", out.height = "90%", fig.align="center", fig.cap="K = 4 Clustering", echo=FALSE}
+knitr::include_graphics("images/cluster_summary.png")
+
+```
+
+
+
+##k means assignment{.build}
+
 \
 \
 \
 \
 
-$$Distance = ||D_{n,k}|| = \sqrt{\sum_i^n(D_{n.k})^2} = \sqrt{(x_{n,1}-\mu_{k,1})^2+\dots+(x_{n,d}-\mu_{k,d})^2}$$
+$$||\vec{a}|| = \sqrt{a_1^2 + a_2^2 + \dots + a_n^2}$$
+
+
+
+##k means assignment
+
+\
+\
+\
+\
+
+$$||x_n - \mu_k|| = \sqrt{(x_{n,1}-\mu_{k,1})^2+\dots+(x_{n,d}-\mu_{k,d})^2}$$
 
 ##Loss Function{.build .bigger}
 
-$$Distance_{Global} = \sum_{k=1}^k \sum_{n:x_n \in S_k} \sum_{d=1}^D (x_{n,d} - \mu_{k,d})^2 $$
+$$Distance_{Global} = \sum_{i=1}^k \sum_{n:x_n \in S_k} ||x_{n}-\mu_{k}||^2 \rightarrow min$$
 
-$\sum_{k=1}^k$ = Sum amongst all clusters
+$\sum_{i=1}^k$ = Sum amongst all clusters
 
 $\sum_{n:x_n \in S_k}$ = for each point in the cluster
 
-$\sum_{d=1}^D (x_{n,d} - \mu_{k,d})^2$ = the sum of the euclidean distance of each points feature to each respective centroid feature
+$||x_{n} - \mu_{k}||^2$ = the squared distance from each $x_n$ to its respective $\mu_k$
 
-
-##Steps {.build}
+##Steps to Cluster {.build}
 
 -Initialize K clusters
 
--Repeat untill convergence{
+-Repeat untill "convergence"{
+
+\ \ \ \ 1. Assign each datapoint to the cluster with the clostset 
+\ \ \ \ \ \ centroid
+
+\ \ \ \ 2. Assign each centroid to be the mean of its clusters
+\ \ \ \ \ \ datapoints.
+
+}
+
+##Pseudocode
+
+-Initialize K clusters
+
+-Repeat untill "convergence"{
 
 \ \ \ \ 1. Assign each datapoint to the cluster with the clostset 
 \ \ \ \ \ \ centroid
@@ -121,7 +243,7 @@ Randomly sample k points from dataset without replacement
 
 $$\mu_k\leftarrow x_n$$
 
-- Repeat untill convergence{
+- Repeat untill "convergence"{
 
 \ \ \ \ 1. Assign each datapoint to the cluster with the clostset
 \ \ \ \ \ \ centroid
@@ -158,7 +280,7 @@ $$\mu_k\leftarrow x_n$$
 
 Repeat untill $S_1...S_k$ dont change{
 
-\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
+\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $||x_n - \mu_k||$
   
 \ \ \ \ -Place $x_n$ in Set $S_k$ and no other $S_j$
 
@@ -175,11 +297,11 @@ $$\mu_k\leftarrow x_n$$
 
 Repeat untill $S_1...S_k$ dont change{
 
-\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $Distance(\mu_k,x_n)$
+\ \ \ \ -find $\mu_k$ for $x_n$ with the smallest $||x_n - \mu_k||$
   
 \ \ \ \ -Place $x_n$ in Set $S_k$ and no other $S_j$
 
-  $$\mu_k\leftarrow|S_k|^{-1} = \frac{1}{N}\sum_{n:x_n \in S_k} x_n$$
+  $$\mu_k\leftarrow \frac{1}{|S_k|}\sum_{n:x_n \in S_k} x_n$$
 
 }
 
@@ -405,7 +527,7 @@ shinyApp(ui = ui, server = server)
 
 Calculate Global distance for each final cluster assignment
 
-```{r out.width = "100%", out.height = "100%", fig.align="center", fig.cap="A3 Dataset Global Similarity for k=1-100", echo=FALSE}
+```{r out.width = "100%", out.height = "90%", fig.align="center", fig.cap="A3 Dataset Global Distance for k=1-100", echo=FALSE}
 knitr::include_graphics("images/Rplot.png")
 
 ```
@@ -419,7 +541,6 @@ knitr::include_graphics("images/Global_vs_Local_min.png")
 
 ```
 
-
 ##Applications{.build}
 
 Dataset Segmentation:
@@ -431,6 +552,11 @@ Dataset Segmentation:
 3.Cluster-then-Predict
 
 ##Applications{.build}
+
+Image Compression
+
+
+##Applications
 
 Image Compression (85kb)
 
@@ -502,10 +628,21 @@ knitr::include_graphics("images/Headshot_2_Color.png")
 
 ```
 
-##App
+
+##App{.build}
+
 https://carlos-ordonez.shinyapps.io/k-means_app/
 
 https://github.com/Carlos-Ordonez/K-Means
 
-##Sources
+```{r out.width = "80%", out.height = "80%", fig.align="center", echo=FALSE}
+knitr::include_graphics("images/shiny_logo.png")
+
+```
+
+
+
+
+
+
 
